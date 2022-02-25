@@ -15,14 +15,14 @@ return false;
 const askGuess = () => {
   rl.question("Guess a number: ", guess => {
 
-    if(!checkGuess(guess)) {
+    if(checkGuess(guess) === false) {
       console.log("Enter an actual number");
       askGuess();
     }
 
-    // guess = Number(guess);
+    guess = Number(guess);
 
-    if(guess == secretNumber) {
+    if(guess === secretNumber) {
       console.log("Correct!");
       rl.close();
     }
