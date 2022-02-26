@@ -7,42 +7,34 @@ const rl = readline.createInterface({
 
 let secretNumber = 10;
 
-// const checkGuess = num => {
-// if(typeof num === "number") return true;
-// return false;
-// }
+const checkGuess = num => {
+if(!Number(num)) return false;
+return true;
+}
 
 const askGuess = () => {
   rl.question("Guess a number: ", guess => {
 
-    if(!Number(guess)){
-
-      // console.log(typeof Number(guess));
+    if(!checkGuess(guess)){
       console.log("Enter an actual number");
       askGuess();
     }
-
 
     guess = Number(guess);
 
     if(guess === secretNumber) {
       console.log("Correct!");
       rl.close();
-      // console.log("Correct!");
-      // console.log("YOU WIN");
     }
     else if(guess > secretNumber) {
       console.log("Too high")
       askGuess();
-      // console.log("Too high")
     }
     else if(guess < secretNumber) {
       console.log("Too low");
       askGuess();
-      // console.log("Too low");
     }
   });
-  //
 }
 
 askGuess();
